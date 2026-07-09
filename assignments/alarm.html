@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="alarm.css">
+</head>
+
+<body>
+    <div class="alarm-container">
+        <h1 class="alarm-clock">Alarm Clock</h1>
+        <div class="container">
+            <div class="clock">
+                <div class="clock-face">
+                    <div class="hand hour-hand"></div>
+                    <div class="hand minute-hand"></div>
+                    <div class="hand second-hand"></div>
+                    <div class="center-dot"></div>
+                    <span class="num n12">12</span>
+                    <span class="num n1">1</span>
+                    <span class="num n2">2</span>
+                    <span class="num n3">3</span>
+                    <span class="num n4">4</span>
+                    <span class="num n5">5</span>
+                    <span class="num n6">6</span>
+                    <span class="num n7">7</span>
+                    <span class="num n8">8</span>
+                    <span class="num n9">9</span>
+                    <span class="num n10">10</span>
+                    <span class="num n11">11</span>
+                </div>
+            </div>
+
+            <input type="time" id="alarmTime" style="padding: 5px;">
+            <button onclick=" setAlarm()" style="padding: 5px;">Set Alarm</button>
+            <p id="time"><button onclick="snoozeAlarm()" style="padding: 5px;">Snooze</button></p>
+            <button onclick="stopAlarm()" style="padding: 5px;">Stop Alarm</button>
+
+
+        </div>
+    </div>
+    <audio id="alarmSound" src="../assignments/audio/alarm.wav" loop></audio>
+
+    <script src="alarm.js"></script>
+</body>
+
+</html>

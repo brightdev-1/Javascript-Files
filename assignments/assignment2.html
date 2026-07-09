@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment-2</title>
+    <style>
+        body {
+            margin-top: 100px;
+            text-align: center;
+        }
+
+        input {
+            padding: 5px;
+            margin: 10px;
+        }
+
+        button {
+            padding: 6px 12px;
+            color: white;
+            background-color: green;
+            border: none;
+            cursor: pointer;
+
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Guess The Number</h1>
+    <p>We have selected a random number between 1-10. See if you can guess it.</p>
+    <label for="guessField">Enter a Guess</label>
+    <input type="text" id="guessField">
+    <button onclick="checkGuess()" id="guessBtn">Submit Guess</button>
+
+    <p id="result"></p>
+
+</body>
+<script src="./assignment2.js"></script>
+
+</html>

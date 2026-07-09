@@ -1,0 +1,103 @@
+* {
+  box-sizing: border-box;
+
+}
+
+.calculator {
+  width: 320px;
+  background: #f3c98b;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: auto;
+  margin-top: 30px;
+  /* height: 90vh; */
+  box-shadow: 0 20px 50px rgba(0, 0, 0, .5);
+}
+
+.title-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: #2b2b28;
+}
+
+.expression {
+  background: #f0e6d6;
+  border-radius: 4px;
+  min-height: 28px;
+  margin-bottom: 8px;
+  padding: 6px 10px;
+  text-align: right;
+  font-size: 14px;
+  color: #6b6b66;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.result {
+  background: #f0e6d6;
+  border-radius: 4px;
+  min-height: 48px;
+  padding: 6px 10px;
+  text-align: right;
+  font-size: 32px;
+  color: #2b2b28;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.memory-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  padding: 0 14px 6px;
+  font-size: 13px;
+  align-items: center;
+  color: #6b6b66;
+}
+
+.memory-row button {
+  background: none;
+  border: none;
+  color: rgba(0, 0, 0, 0.479);
+  font-size: 13px;
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  padding: 6px 14px 14px;
+}
+
+.keypad button {
+  height: 56px;
+  border: 1.5px solid #5f8a6b;
+  border-radius: 6px;
+  background: #e8e2d2;
+  font-size: 17px;
+  color: #2b2b28;
+  cursor: pointer;
+  transition: background .08s ease;
+}
+
+.keypad button:hover {
+  background-color: #ded6c2;
+}
+
+.keypad button:active {
+  background: #cfc6ae;
+}
+
+.keypad button.equals {
+  background: #6b9b7a;
+  color: white;
+  border-color: #4f7a5c;
+}
+
+.keypad button.equals:hover {
+  background: #5d8c6c;
+}

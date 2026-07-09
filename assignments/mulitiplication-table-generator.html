@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Multiplication Table Generator</title>
+    <style>
+        body {
+            background-color: #f5c451;
+            padding: 30px;
+        }
+
+        h1 {
+            margin-bottom: 5px;
+        }
+
+        p {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .controls {
+            margin: 20px 0;
+        }
+
+        input[type="number"] {
+            width: 60px;
+            padding: 4px;
+            margin: 0 5px;
+        }
+
+        button {
+            background-color: #2222dd;
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        button:hover {
+            background-color: #1a1ab0;
+        }
+
+        #output {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0 25px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Multiplication Table Generator</h1>
+    <p>Generate a Multiplication table</p>
+
+    <div class="controls">
+        From: <input type="number" id="fromNum">
+        to <input type="number" id="toNum">
+        <button onclick="generateTable()">Generate</button>
+    </div>
+
+    <div id="output"></div>
+
+</body>
+<script src="./multiplication-table-generator.js"></script>
+
+</html>

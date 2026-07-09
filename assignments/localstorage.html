@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage Example</title>
+    <style>
+        body {
+            font-family: Georgia, serif;
+            background: #D5BDAC;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background: #D5BDAC;
+            border: 1px solid black;
+            border-radius: 12px;
+            margin-top: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+            padding: 20px 30px;
+            width: 500px;
+            box-sizing: border-box;
+        }
+        .card h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .card p.subtitle {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .card input[type="text"],
+        .card input[type="email"],
+        .card input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin: 6px 0;
+            border: none;
+            border-radius: 6px;
+            background: #e2e0d3;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        .card label {
+            display: block;
+            text-align: center;
+            margin: 10px 0;
+        }
+        .card button.main-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(90deg, #1a1aff, #3a3aff);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .card span,
+        .card p.switch-text {
+            text-align: center;
+            display: block;
+            margin-top: 10px;
+        }
+        .card button.switch-btn {
+            background: #2222ee;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 4px 10px;
+            cursor: pointer;
+        }
+        .hidden {
+            display: none;
+        }
+        .hint {
+            font-size: 12px;
+            text-align: center;
+            margin: 4px 0 0;
+            opacity: 0.75;
+        }
+    </style>
+</head>
+<body>
+
+<!-- SIGN UP CARD -->
+<form class="card" id="signUpForm" novalidate>
+    <h2>Sign Up</h2>
+    <input type="text" id="firstName" placeholder="First Name">
+    <input type="text" id="lastName" placeholder="Last Name">
+    <input type="email" id="signupEmail" placeholder="Email-address">
+    <input type="password" id="signupPassword" placeholder="Password">
+    <p class="hint">Min 8 characters, with uppercase, lowercase, number &amp; special character</p>
+    <input type="password" id="confirmPassword" placeholder="Confirm Password">
+    <label>
+        <input type="checkbox" id="terms"> I agree to the privacy and policy
+    </label>
+    <button class="main-btn" type="submit">Sign Up</button>
+    <p class="switch-text">Already have an account? <button class="switch-btn" type="button" id="goToLoginBtn">Login</button></p>
+</form>
+
+<!-- LOGIN CARD -->
+<form class="card hidden" id="loginForm" novalidate>
+    <h2>Log In</h2>
+    <p class="subtitle">Please log-in to continue</p>
+    <input type="email" id="loginEmail" placeholder="Email-address">
+    <input type="password" id="loginPassword" placeholder="password">
+    <button class="main-btn" type="submit">Log In</button>
+    <p class="switch-text">Don't have an account? <button class="switch-btn" type="button" id="goToSignUpBtn">SignUp</button></p>
+</form>
+
+<p id="output"></p>
+
+<script src="./localstorage.js"></script>
+
+</body>
+</html>

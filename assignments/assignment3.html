@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment3</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .calculator {
+            padding: 20px;
+            border: 1px solid #ccc;
+            background: #fff;
+            gap: 10px;
+            display: flex;
+            /* flex-direction: column; */
+            border-radius: 8px;
+        }
+
+        input,
+        select,
+        button {
+            margin: auto;
+            padding: 8px;
+        }
+
+        button {
+            background: green;
+            border: none;
+            color: white;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calculator">
+        <input type="number" id="num1">
+
+        <select id="operator">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="/">/</option>
+            <option value="*">*</option>
+        </select>
+
+        <input type="number" id="num2">
+        <button onclick="calculate()">Submit</button>
+        <input type="text" id="result" readonly>
+    </div>
+</body>
+<script src="./assignment3.js"></script>
+
+</html>

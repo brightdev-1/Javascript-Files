@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recharge Card Generator</title>
+
+    <style>
+        body {
+            max-width: 700px;
+            background: #B99D82;
+            margin: 40px auto;
+            justify-content: center;
+            align-items: center;
+        }
+
+        table {
+            width: 100%;
+            padding: 20px;
+            margin-top: 4rem;
+            border-collapse: collapse;
+            position: relative;
+            top: 50px;
+        }
+
+        .delete{
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+        th, td {
+            border: 1px solid #00000033;
+            padding: 6px 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 style="margin: auto; text-align: center;">Recharge Card Generator</h2>
+    <br>
+    <div class="network-centre" style="display: flex; text-align: center;border: none; justify-content: space-evenly;">
+        <div style="display: flex; align-items: center; gap: 5px;">
+            <p style="text-align: center;">Selected Network :</p>
+            <div style="width: 80px;">
+                <select id="networks">
+                    <option value="MTN">Mtn</option>
+                    <option value="Glo">Glo</option>
+                    <option value="Airtel">Airtel</option>
+                    <option value="Etisalat">Etisalat</option>
+                </select>
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 10px; align-items: center;">
+            <p>Enter-Pin :</p>
+            <input type="text" id="pinInput" style="width: 150px; height: 1.5rem;">
+            <button id="recharge-btn"
+                style="color:white; border:none; border-radius: 3px; height: 30px;background:#0071FF; cursor: pointer;">Recharge</button>
+        </div>
+    </div>
+    <div style="display: flex;position: absolute; right: 550px; border: none; align-items: center; gap: 5px;">
+        <p style="text-align: center;">Amount :</p>
+        <div style="width: 80px;">
+            <select id="amount">
+                <option value="#50">#50</option>
+                <option value="#100">#100</option>
+                <option value="#500">#500</option>
+                <option value="#1000">#1000</option>
+            </select>
+        </div>
+    </div>
+
+    <div
+        style="display: flex;position: absolute;margin-top: 3rem; right: 450px; border: none; align-items: center; gap: 3px;">
+        <div style="display: flex; gap: 10px;border-radius: 25px;">
+            <p style="text-align: center;">Code :</p>
+            <input type="text" id="code" readonly style="height: 30px;">
+            <button id="generate-btn"
+                style="height:35px;border:none;background:#00BF2B;border-radius: 3px;color: white; cursor: pointer;">Generate</button>
+            <button id="save-btn"
+                style="height: 35px;border-radius: 3px; background: #00BF2B;border: none;color: white; cursor: pointer;">Save
+                - Pin</button>
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>S/N</th>
+                <th>Network Operator</th>
+                <th>Amount</th>
+                <th>Pin</th>
+                <th>Status</th>
+                <th>Date Created</th>
+                <th>Date Used</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="cardTableBody"></tbody>
+    </table>
+
+</body>
+<script src="./recharge-card.js"></script>
+
+</html>
