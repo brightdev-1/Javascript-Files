@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 45%, #fdf2f8 100%);
+            color: #0f172a;
+            padding: 24px;
+        }
+
+        .page-shell {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.65);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
+            padding: 28px;
+        }
+
+        h1 {
+            margin-top: 0;
+            text-align: center;
+            font-size: 2.2rem;
+            background: linear-gradient(90deg, #4f46e5, #e11d48);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .back-btn {
+            border: none;
+            padding: 11px 18px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #111827, #374151);
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 10px 20px rgba(17, 24, 39, 0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 24px rgba(17, 24, 39, 0.25);
+        }
+
+        .display-area {
+            margin: 24px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .blog-card {
+            width: 100%;
+            max-width: 620px;
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 16px 35px rgba(15, 23, 42, 0.12);
+            border: 1px solid #e2e8f0;
+        }
+
+        .blog-card h2 {
+            margin-top: 0;
+            color: #111827;
+        }
+
+        .blog-image {
+            width: 100%;
+            max-height: 280px;
+            object-fit: cover;
+            border-radius: 14px;
+            margin: 12px 0;
+        }
+
+        .blog-content {
+            line-height: 1.7;
+            color: #475569;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 14px;
+            color: #334155;
+            font-weight: 600;
+        }
+
+        .stat-pill {
+            background: #eef2ff;
+            color: #4338ca;
+            padding: 8px 12px;
+            border-radius: 999px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            font-weight: 700;
+        }
+
+        .status-badge.published {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .status-badge.draft {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .form-panel {
+            margin-top: 20px;
+            background: linear-gradient(145deg, #ffffff, #f8fafc);
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 14px 28px rgba(15, 23, 42, 0.08);
+            border: 1px solid #e2e8f0;
+        }
+
+        .modern-form {
+            display: grid;
+            gap: 14px;
+        }
+
+        .modern-form .mb-3 {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .form-control {
+            border: 1px solid #cbd5e1;
+            border-radius: 12px;
+            padding: 11px 12px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .form-control:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.16);
+        }
+
+        .btn-primary {
+            border: none;
+            padding: 12px 16px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #4f46e5, #db2777);
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 10px 18px rgba(79, 70, 229, 0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 24px rgba(79, 70, 229, 0.28);
+        }
+
+        .form-check {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 12px;
+            }
+
+            .page-shell {
+                padding: 16px;
+            }
+
+            .blog-meta {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-shell">
+
+    <h1>Blog Post</h1>
+
+    <button class="back-btn" onclick="window.location.href='./firebase.html'">
+        Back
+    </button>
+
+    <div id="display" class="display-area"></div>
+
+    <div class="container form-panel">
+        <form id="updateBlog" class="modern-form">
+
+            <div class="mb-3">
+                <label class="form-label">Title:</label>
+                <input type="text" class="form-control" name="title" id="title" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Image:</label>
+                <input type="text" class="form-control" name="image" id="image" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Content:</label>
+                <input type="text" class="form-control" name="content" id="content" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Author:</label>
+                <input type="text" class="form-control" name="author" id="author" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Likes:</label>
+                <input type="number" class="form-control" name="likes" id="likes" required>
+            </div>
+
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" name="isPublish" id="isPublish">
+                <label class="form-check-label">Publish</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                Submit
+            </button>
+
+        </form>
+    </div>
+
+    </div>
+</body>
+
+<script type="module">
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
+
+    import {
+        getFirestore,
+        doc,
+        getDoc,
+        updateDoc,
+    } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
+
+    // Firebase config
+    const firebaseConfig = {
+        apiKey: "AIzaSyAFIjpmTKjei2rkrgXyMbA5pdGlH-RDr1M",
+        authDomain: "juneblog-54e35.firebaseapp.com",
+        projectId: "juneblog-54e35",
+        storageBucket: "juneblog-54e35.firebasestorage.app",
+        messagingSenderId: "84672277747",
+        appId: "1:84672277747:web:d2cae53eed249ddac95b86",
+        measurementId: "G-KX6MKSN7FP"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get("id");
+
+
+    if (!id) {
+        document.getElementById("display").innerHTML = "<h2>No blog selected</h2>";
+    } else {
+
+        const docRef = doc(db, "blog", id);
+
+        async function getSingleBlog() {
+            try {
+                const docSnap = await getDoc(docRef);
+
+                if (docSnap.exists()) {
+
+                    const blog = {
+                        id: docSnap.id, ...docSnap.data()
+                    };
+
+                    displayBlog(blog);
+
+                } else {
+                    document.getElementById("display").innerHTML = "<h2>Blog not found</h2>";
+                }
+
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        function displayBlog(blog) {
+
+            const display = document.getElementById("display");
+
+            const { title, image, content, author, likes, isPublish } = blog;
+
+            display.innerHTML = `
+        <div class="blog-card">
+            <h2>${title}</h2>
+            <img src="${image}" alt="${title}" class="blog-image">
+            <p class="blog-content">${content}</p>
+
+            <div class="blog-meta">
+                <span>Author: ${author}</span>
+                <span class="stat-pill">Likes: ${likes}</span>
+            </div>
+
+            <p class="status-badge ${isPublish ? "published" : "draft"}">${isPublish ? "Published" : "Not published"}</p>
+        </div>
+        `;
+
+            document.getElementById("title").value = title;
+            document.getElementById("image").value = image;
+            document.getElementById("content").value = content;
+            document.getElementById("author").value = author;
+            document.getElementById("likes").value = likes;
+            document.getElementById("isPublish").checked = isPublish;
+        }
+
+        getSingleBlog();
+
+        const form = document.getElementById("updateBlog");
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const updatedData = {
+                title: form.title.value,
+                image: form.image.value,
+                content: form.content.value,
+                author: form.author.value,
+                likes: form.likes.value,
+                isPublish: form.isPublish.checked
+            }
+
+            try {
+                await updateDoc(docRef, updatedData);
+                alert("Blog updated successfully!");    
+                window.location.href = "./firebase.html";
+            } catch (error) {
+                console.log(error);
+            }
+        })
+    }
+
+</script>
+
+</html>

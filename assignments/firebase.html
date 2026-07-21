@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>All Blog</h1>
+
+
+    <div id="display">
+        
+    </div>
+</body>
+
+<script type="module">
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
+
+    import {
+        getFirestore,
+        collection,
+        getDocs,
+    } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyAFIjpmTKjei2rkrgXyMbA5pdGlH-RDr1M",
+        authDomain: "juneblog-54e35.firebaseapp.com",
+        projectId: "juneblog-54e35",
+        storageBucket: "juneblog-54e35.firebasestorage.app",
+        messagingSenderId: "84672277747",
+        appId: "1:84672277747:web:d2cae53eed249ddac95b86",
+        measurementId: "G-KX6MKSN7FP"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    console.log(app);
+
+    const db = getFirestore(app);
+    console.log(db);
+
+    const colRef = collection(db, "blog");
+    console.log(colRef);
+
+    const blogArr = [];
+
+    async function getAllBlogs() {
+        try {
+
+            // Query database
+            const querySnapShot = await getDocs(colRef);
+
+            console.log(querySnapShot);
+
+            querySnapShot.forEach((doc) => {
+
+                const data = {
+                    id: doc.id, ...doc.data()
+                };
+
+                blogArr.push(data);
+                console.log(blogArr);
+
+                displayAllBlogs();
+            });
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    function displayAllBlogs() {
+
+        let display = document.getElementById("display");
+
+        display.innerHTML = "";
+
+        blogArr.forEach((blog) => {
+
+            const {
+                title,
+                image,
+                content,
+                author,
+                likes,
+                isPublish
+            } = blog;
+
+            display.innerHTML += `
+        <div style="border:1px solid black; width:500px; padding:1rem; margin:1rem;">
+
+            <h1>
+                <a href="./blogs.html?id=${blog.id}">${title}</a>
+            </h1>
+
+            <img src="${image}" alt="" style="width:300px;">
+
+            <p>${content.slice(0, 100)} ...</p>
+
+            <div style="display:flex; justify-content:space-between;">
+
+                <span>Author:${author}</span>
+
+                <span><button>Likes:${likes}</button></span>
+
+            </div>
+
+            <p>${isPublish ? "Published" : "Not published"}</p>
+
+        </div>
+        `;
+        });
+    }
+
+    getAllBlogs();
+
+</script>
+
+</html>

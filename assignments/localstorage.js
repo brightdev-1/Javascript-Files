@@ -1,4 +1,4 @@
-// Standard email format
+  // Standard email format
 const emailReg = /^[A-Za-z0-9._%-]+@[A-Za-z0-9-]+\.[A-Za-z]{2,}$/;
 
 // 8+ chars, at least one lowercase, one uppercase, one digit, one special char
